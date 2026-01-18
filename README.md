@@ -9,15 +9,19 @@ A simple speed reading application built with TypeScript and Bun. This tool uses
 - Adjustable font size
 - Start/pause controls
 - Highlights the middle character in red for optimal focus
-- Uses a dyslexia-friendly font (Open Dyslexic) with monospace fallback for even spacing
+- Uses local Open Dyslexic font for dyslexia-friendly reading
 - Clean black background with white text for reduced eye strain
 
 ## Getting Started
 
-1. Install dependencies: `bun install`
-2. Build the app: `bun run build`
-3. Serve the application: `bunx serve public` (for dyslexia font) or open public/index.html directly (font will fallback)
-4. Adjust speed, font size, and start reading
+1. Download Open Dyslexic font files:
+   - Go to https://opendyslexic.org/ or https://fonts.google.com/specimen/Open+Dyslexic
+   - Download OpenDyslexic-Regular.woff2, OpenDyslexic-Regular.woff, OpenDyslexic-Bold.woff2, OpenDyslexic-Bold.woff
+   - Place them in `public/fonts/`
+2. Install dependencies: `bun install`
+3. Build the app: `bun run build`
+4. Serve the application: `bunx serve public` or open public/index.html directly
+5. Adjust speed, font size, and start reading
 
 ## Project Structure
 
