@@ -10,6 +10,8 @@ const display = document.getElementById('word-display') as HTMLElement;
 const speedSlider = document.getElementById('speed-slider') as HTMLInputElement;
 const sizeSlider = document.getElementById('size-slider') as HTMLInputElement;
 const startPauseBtn = document.getElementById('start-pause-btn') as HTMLButtonElement;
+const speedValue = document.getElementById('speed-value') as HTMLSpanElement;
+const sizeValue = document.getElementById('size-value') as HTMLSpanElement;
 
 function displayWord(index: number) {
     if (index >= words.length) {
@@ -56,7 +58,8 @@ function stopReading() {
 }
 
 function updateSpeed() {
-    speed = parseInt(speedSlider.value);
+    speed = 2050 - parseInt(speedSlider.value);
+    speedValue.textContent = speed.toString();
     if (intervalId) {
         pauseReading();
         startReading();
@@ -65,6 +68,7 @@ function updateSpeed() {
 
 function updateSize() {
     sizeMultiplier = parseFloat(sizeSlider.value);
+    sizeValue.textContent = sizeMultiplier.toFixed(1);
     document.documentElement.style.setProperty('--font-size-display', `calc(${sizeMultiplier} * var(--font-size-base))`);
 }
 
@@ -79,5 +83,17 @@ startPauseBtn.addEventListener('click', () => {
     }
 });
 
+document.addEventListener('keydown', (event) => {
+    if (event.code === 'Space') {
+        event.preventDefault();
+        if (intervalId) {
+            pauseReading();
+        } else {
+            startReading();
+        }
+    }
+});
+
 // Initial setup
+updateSpeed();
 updateSize();
