@@ -21,7 +21,7 @@ function displayWord(index: number) {
     const before = word.slice(0, middleIndex);
     const middle = word[middleIndex] || '';
     const after = word.slice(middleIndex + 1);
-    display.innerHTML = `${before}<span style="color: red;">${middle}</span>${after}`;
+    display.innerHTML = `<div class="word"><span class="before">${before}</span><span class="middle">${middle}</span><span class="after">${after}</span></div>`;
 }
 
 function startReading() {
