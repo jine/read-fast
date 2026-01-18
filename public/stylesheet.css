@@ -10,7 +10,7 @@
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
-    font-family: monospace;
+    font-family: 'Open Dyslexic', monospace;
     font-size: var(--font-size-base);
     line-height: 1.5;
     margin: 0;

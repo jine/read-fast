@@ -9,7 +9,7 @@ A simple speed reading application built with TypeScript and Bun. This tool uses
 - Adjustable font size
 - Start/pause controls
 - Highlights the middle character in red for optimal focus
-- Uses monospace font for even character spacing
+- Uses a dyslexia-friendly font (Open Dyslexic) with monospace fallback for even spacing
 - Clean black background with white text for reduced eye strain
 
 ## Getting Started
