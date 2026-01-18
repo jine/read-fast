@@ -1,0 +1,27 @@
+/* CSS Custom Properties for 2026 best practices */
+:root {
+    --bg-color: black;
+    --text-color: white;
+    --font-family: 'Open Dyslexic', sans-serif;
+    --font-size-base: clamp(1rem, 2.5vw, 1.25rem);
+    --font-size-display: clamp(2rem, 5vw, 3rem);
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-family);
+    font-size: var(--font-size-base);
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#word-display {
+    font-size: var(--font-size-display);
+    text-align: center;
+}
