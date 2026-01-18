@@ -1,6 +1,6 @@
 # Read Fast
 
-A simple speed reading application built with TypeScript and Bun. This tool uses Rapid Serial Visual Presentation (RSVP) to display text one word at a time, with the middle character of each word highlighted in red to serve as an optimal recognition point for faster reading.
+A modern speed reading application built with TypeScript and Bun. This tool uses Rapid Serial Visual Presentation (RSVP) to display text one word at a time, with the middle character highlighted in red for optimal focus. Features adjustable speed, font size, letter spacing, font selection, and multilingual support.
 
 ## What is RSVP?
 
@@ -8,33 +8,37 @@ Rapid Serial Visual Presentation, or RSVP, is a speed reading technique that dis
 
 ## Features
 
-- Rapid Serial Visual Presentation (RSVP) speed reading
-- Adjustable reading speed (100-1000ms per word)
-- Adjustable font size
-- Start/pause controls
-- Highlights the middle character in red for optimal focus
-- Uses Arial font for easy, clean reading
-- Clean black background with white text for reduced eye strain
+- **RSVP Speed Reading**: Displays words one by one with middle character highlighted
+- **Adjustable Speed**: 50-2000ms intervals (displayed as WPM, inverted scale)
+- **Font Size Control**: 1-10x multiplier
+- **Letter Spacing**: 0.1-1.0em adjustable spacing
+- **Font Selection**: 20 Google Fonts including dyslexia-friendly options
+- **Multilingual Support**: English, Finnish, Swedish with translated content
+- **Keyboard Controls**:
+  - Space: Start/Pause
+  - Up/Down Arrows: Switch fonts
+  - Left/Right Arrows: Adjust speed
+- **Glassmorphism UI**: Modern gradient controls with backdrop blur
+- **Responsive Design**: Clean, accessible interface
 
 ## Getting Started
 
 1. Install dependencies: `bun install`
 2. Build the app: `bun run build`
 3. Serve the application: `bunx serve public` or open public/index.html directly
-4. Adjust speed, font size, and start reading
+4. Use controls to adjust settings and start reading
 
 ## Project Structure
 
-- `public/index.html`: Main HTML file
+- `public/index.html`: Main HTML file with controls
 - `public/reset.css`: CSS reset styles
-- `public/stylesheet.css`: Main styles
-- `src/script.ts`: TypeScript script with inlined text data
-- `public/script.js`: Compiled JavaScript file
+- `public/stylesheet.css`: Main styles with glassmorphism
+- `src/script.ts`: TypeScript script with RSVP logic and translations
+- `public/script.js`: Compiled JavaScript bundle
 
 ## Technologies
 
 - TypeScript
-- Bun (for building and package management)
-- HTML5
-- CSS3
-- Open Dyslexic font from Google Fonts
+- Bun (build tool and package manager)
+- HTML5 & CSS3 with modern features (backdrop-filter, CSS variables)
+- Google Fonts for typography
