@@ -28,10 +28,11 @@ body {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    background: rgba(255, 255, 255, 0.1);
+    background: linear-gradient(135deg, #5b34da, #0066ff);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     padding: 15px;
+    margin: 10px;
     border-radius: 10px;
     color: white;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
