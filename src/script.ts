@@ -1,6 +1,11 @@
-const textData = "Rapid Serial Visual Presentation, or RSVP, is a speed reading technique that displays words sequentially in a fixed position on the screen. By eliminating eye movements between words, RSVP allows for faster reading speeds. Research indicates that optimal comprehension occurs at rates between 250 and 500 words per minute, depending on the reader. This method highlights the fixation point, often the middle of the word, to guide attention. Benefits include increased reading efficiency and reduced eye strain. Many speed reading apps use RSVP to help users train their reading skills. The technique is particularly useful for skimming large amounts of text quickly. With practice, readers can achieve higher speeds while maintaining understanding.";
+const texts: Record<string, string> = {
+    en: "Rapid Serial Visual Presentation, or RSVP, is a speed reading technique that displays words sequentially in a fixed position on the screen. By eliminating eye movements between words, RSVP allows for faster reading speeds. Research indicates that optimal comprehension occurs at rates between 250 and 500 words per minute, depending on the reader. This method highlights the fixation point, often the middle of the word, to guide attention. Benefits include increased reading efficiency and reduced eye strain. Many speed reading apps use RSVP to help users train their reading skills. The technique is particularly useful for skimming large amounts of text quickly. With practice, readers can achieve higher speeds while maintaining understanding.",
+    fi: "Rapid Serial Visual Presentation, tai RSVP, on nopean lukemisen tekniikka, joka näyttää sanat peräkkäin kiinteässä paikassa näytöllä. Poistamalla silmien liikkeet sanojen välillä RSVP mahdollistaa nopeammat lukunopeudet. Tutkimukset osoittavat, että optimaalinen ymmärrys tapahtuu nopeuksilla 250-500 sanaa minuutissa lukijan mukaan. Tämä menetelmä korostaa kiinnityskohtaa, usein sanan keskellä, ohjatakseen huomiota. Hyödyt sisältävät lisääntyneen lukutehokkuuden ja vähentyneen silmien rasituksen. Monet nopean lukemisen sovellukset käyttävät RSVP:ta auttaakseen käyttäjiä harjoittamaan lukutaitojaan. Tekniikka on erityisen hyödyllinen suurten tekstimäärien nopeaan selaamiseen. Harjoittelulla lukijat voivat saavuttaa korkeampia nopeuksia ylläpitäen ymmärryksen.",
+    sv: "Rapid Serial Visual Presentation, eller RSVP, är en hastighetsläsningsteknik som visar ord sekventiellt på en fast position på skärmen. Genom att eliminera ögonrörelser mellan ord tillåter RSVP snabbare läshastigheter. Forskning visar att optimal förståelse sker vid hastigheter mellan 250 och 500 ord per minut, beroende på läsaren. Denna metod framhäver fixeringspunkten, ofta mitt i ordet, för att guida uppmärksamheten. Fördelar inkluderar ökad läseffektivitet och minskad ögonbelastning. Många hastighetsläsningsappar använder RSVP för att hjälpa användare att träna sina läsfärdigheter. Tekniken är särskilt användbar för att snabbt skumma stora mängder text. Med övning kan läsare uppnå högre hastigheter samtidigt som de bibehåller förståelsen."
+};
 
-const words = textData.split(/\s+/).filter(w => w.length > 0);
+let currentLang = 'en';
+let words = (texts as any)[currentLang].split(/\s+/).filter((w: string) => w.length > 0);
 let currentIndex = 0;
 let intervalId: number | null = null;
 let speed = 500; // ms
@@ -15,6 +20,7 @@ const startPauseBtn = document.getElementById('start-pause-btn') as HTMLButtonEl
 const speedValue = document.getElementById('speed-value') as HTMLSpanElement;
 const sizeValue = document.getElementById('size-value') as HTMLSpanElement;
 const spacingValue = document.getElementById('spacing-value') as HTMLSpanElement;
+const langSelect = document.getElementById('lang-select') as HTMLSelectElement;
 const fontSelect = document.getElementById('font-select') as HTMLSelectElement;
 
 function displayWord(index: number) {
@@ -81,6 +87,15 @@ function updateSpacing() {
     spacingValue.textContent = letterSpacing.toFixed(1);
 }
 
+function updateLang() {
+    currentLang = langSelect.value;
+    words = (texts as any)[currentLang].split(/\s+/).filter((w: string) => w.length > 0);
+    currentIndex = 0;
+    if (!intervalId) {
+        displayWord(0);
+    }
+}
+
 function updateFont() {
     const selectedFont = fontSelect.value;
     document.documentElement.style.setProperty('--font-family', `'${selectedFont}', sans-serif`);
@@ -90,6 +105,7 @@ function updateFont() {
 speedSlider.addEventListener('input', updateSpeed);
 sizeSlider.addEventListener('input', updateSize);
 spacingSlider.addEventListener('input', updateSpacing);
+langSelect.addEventListener('change', updateLang);
 fontSelect.addEventListener('change', updateFont);
 startPauseBtn.addEventListener('click', () => {
     if (intervalId) {
