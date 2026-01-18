@@ -4,7 +4,7 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "build": "bun build src/script.ts --outdir public --format esm",
+    "build": "bun build src/script.ts --outdir public --format iife --minify",
     "dev": "nodemon --exec 'bun run build' --watch src --ext ts"
   },
   "devDependencies": {
