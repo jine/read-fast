@@ -127,19 +127,13 @@ body {
 
 #word-display {
     font-size: var(--font-size-display);
-    display: flex;
-    justify-content: center;
     position: relative;
+    height: 1em;
 }
 
-.before, .after {
-    font-family: var(--font-family);
-}
-
-.middle {
-    color: red;
+.char {
     position: absolute;
-    left: 50%;
+    top: 0;
     transform: translateX(-50%);
     font-family: var(--font-family);
 }
