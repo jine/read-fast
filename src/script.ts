@@ -18,10 +18,17 @@ function displayWord(index: number) {
     }
     const word = words[index]!;
     const middleIndex = Math.floor(word.length / 2);
-    const before = word.slice(0, middleIndex);
-    const middle = word[middleIndex] || '';
-    const after = word.slice(middleIndex + 1);
-    display.innerHTML = `<div class="word"><span class="before">${before}</span><span class="middle">${middle}</span><span class="after">${after}</span></div>`;
+    let html = '<div class="word">';
+    for (let i = 0; i < word.length; i++) {
+        const char = word[i];
+        const isMiddle = i === middleIndex;
+        const style = isMiddle ? 'color: red;' : '';
+        const offset = (i - middleIndex) * 0.6; // assume 0.6em per char
+        const left = `calc(50% + ${offset}em)`;
+        html += `<span class="char" style="left: ${left}; ${style}">${char}</span>`;
+    }
+    html += '</div>';
+    display.innerHTML = html;
 }
 
 function startReading() {
