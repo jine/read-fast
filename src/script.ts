@@ -99,6 +99,32 @@ document.addEventListener('keydown', (event) => {
         } else {
             startReading();
         }
+    } else if (event.code === 'ArrowUp') {
+        event.preventDefault();
+        const options = fontSelect.options;
+        const current = fontSelect.selectedIndex;
+        const prev = (current - 1 + options.length) % options.length;
+        fontSelect.selectedIndex = prev;
+        updateFont();
+    } else if (event.code === 'ArrowDown') {
+        event.preventDefault();
+        const options = fontSelect.options;
+        const current = fontSelect.selectedIndex;
+        const next = (current + 1) % options.length;
+        fontSelect.selectedIndex = next;
+        updateFont();
+    } else if (event.code === 'ArrowLeft') {
+        event.preventDefault();
+        const current = parseInt(speedSlider.value);
+        const newVal = Math.max(50, current - 25);
+        speedSlider.value = newVal.toString();
+        updateSpeed();
+    } else if (event.code === 'ArrowRight') {
+        event.preventDefault();
+        const current = parseInt(speedSlider.value);
+        const newVal = Math.min(2000, current + 25);
+        speedSlider.value = newVal.toString();
+        updateSpeed();
     }
 });
 
