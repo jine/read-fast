@@ -12,6 +12,7 @@ const sizeSlider = document.getElementById('size-slider') as HTMLInputElement;
 const startPauseBtn = document.getElementById('start-pause-btn') as HTMLButtonElement;
 const speedValue = document.getElementById('speed-value') as HTMLSpanElement;
 const sizeValue = document.getElementById('size-value') as HTMLSpanElement;
+const fontSelect = document.getElementById('font-select') as HTMLSelectElement;
 
 function displayWord(index: number) {
     if (index >= words.length) {
@@ -73,9 +74,15 @@ function updateSize() {
     document.documentElement.style.setProperty('--font-size-display', `calc(${sizeMultiplier} * var(--font-size-base))`);
 }
 
+function updateFont() {
+    const selectedFont = fontSelect.value;
+    document.documentElement.style.setProperty('--font-family', `'${selectedFont}', sans-serif`);
+}
+
 // Event listeners
 speedSlider.addEventListener('input', updateSpeed);
 sizeSlider.addEventListener('input', updateSize);
+fontSelect.addEventListener('change', updateFont);
 startPauseBtn.addEventListener('click', () => {
     if (intervalId) {
         pauseReading();
@@ -98,3 +105,4 @@ document.addEventListener('keydown', (event) => {
 // Initial setup
 updateSpeed();
 updateSize();
+updateFont();
