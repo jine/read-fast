@@ -5,10 +5,11 @@
   "private": true,
   "scripts": {
     "build": "bun build src/script.ts --outdir public --format esm",
-    "dev": "bun run build"
+    "dev": "nodemon --exec 'bun run build' --watch src --ext ts"
   },
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "nodemon": "^3.1.11"
   },
   "peerDependencies": {
     "typescript": "^5"
