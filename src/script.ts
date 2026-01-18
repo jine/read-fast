@@ -26,9 +26,10 @@ function displayWord(index: number) {
 
 function startReading() {
     if (intervalId) return;
+    displayWord(currentIndex);
     intervalId = setInterval(() => {
-        displayWord(currentIndex);
         currentIndex++;
+        displayWord(currentIndex);
     }, speed);
     startPauseBtn.textContent = 'Pause';
 }
@@ -71,6 +72,5 @@ startPauseBtn.addEventListener('click', () => {
     }
 });
 
-// Initial display
-displayWord(0);
+// Initial setup
 updateSize();
