@@ -129,15 +129,3 @@ body {
     font-size: var(--font-size-display);
     text-align: center;
 }
-
-.word {
-    position: relative;
-    height: 1em;
-}
-
-.char {
-    position: absolute;
-    top: 0;
-    transform: translateX(-50%);
-    font-family: var(--font-family);
-}
