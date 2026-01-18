@@ -64,4 +64,5 @@ body {
     position: absolute;
     top: 0;
     transform: translateX(-50%);
+    font-family: var(--font-family);
 }
