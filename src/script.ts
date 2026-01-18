@@ -5,13 +5,16 @@ let currentIndex = 0;
 let intervalId: number | null = null;
 let speed = 500; // ms
 let sizeMultiplier = 3;
+let letterSpacing = 0.6;
 
 const display = document.getElementById('word-display') as HTMLElement;
 const speedSlider = document.getElementById('speed-slider') as HTMLInputElement;
 const sizeSlider = document.getElementById('size-slider') as HTMLInputElement;
+const spacingSlider = document.getElementById('spacing-slider') as HTMLInputElement;
 const startPauseBtn = document.getElementById('start-pause-btn') as HTMLButtonElement;
 const speedValue = document.getElementById('speed-value') as HTMLSpanElement;
 const sizeValue = document.getElementById('size-value') as HTMLSpanElement;
+const spacingValue = document.getElementById('spacing-value') as HTMLSpanElement;
 const fontSelect = document.getElementById('font-select') as HTMLSelectElement;
 
 function displayWord(index: number) {
@@ -26,7 +29,7 @@ function displayWord(index: number) {
         const char = word[i];
         const isMiddle = i === middleIndex;
         const style = isMiddle ? 'color: red;' : '';
-        const offset = (i - middleIndex) * 0.6;
+        const offset = (i - middleIndex) * letterSpacing;
         const left = `calc(50% + ${offset}em)`;
         html += `<span class="char" style="left: ${left}; ${style}">${char}</span>`;
     }
@@ -73,6 +76,11 @@ function updateSize() {
     document.documentElement.style.setProperty('--font-size-display', `calc(${sizeMultiplier} * var(--font-size-base))`);
 }
 
+function updateSpacing() {
+    letterSpacing = parseFloat(spacingSlider.value);
+    spacingValue.textContent = letterSpacing.toFixed(1);
+}
+
 function updateFont() {
     const selectedFont = fontSelect.value;
     document.documentElement.style.setProperty('--font-family', `'${selectedFont}', sans-serif`);
@@ -81,6 +89,7 @@ function updateFont() {
 // Event listeners
 speedSlider.addEventListener('input', updateSpeed);
 sizeSlider.addEventListener('input', updateSize);
+spacingSlider.addEventListener('input', updateSpacing);
 fontSelect.addEventListener('change', updateFont);
 startPauseBtn.addEventListener('click', () => {
     if (intervalId) {
@@ -130,4 +139,5 @@ document.addEventListener('keydown', (event) => {
 // Initial setup
 updateSpeed();
 updateSize();
+updateSpacing();
 updateFont();
