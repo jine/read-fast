@@ -59,7 +59,8 @@ function stopReading() {
 
 function updateSpeed() {
     speed = 2050 - parseInt(speedSlider.value);
-    speedValue.textContent = speed.toString();
+    const wpm = Math.round(60000 / speed);
+    speedValue.textContent = wpm.toString();
     if (intervalId) {
         pauseReading();
         startReading();
