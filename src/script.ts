@@ -26,8 +26,8 @@ function displayWord(index: number) {
         const char = word[i];
         const isMiddle = i === middleIndex;
         const style = isMiddle ? 'color: red;' : '';
-        const offset = (i - middleIndex); // 1ch per char in monospace
-        const left = `calc(50% + ${offset}ch)`;
+        const offset = (i - middleIndex) * 0.6; // approximate em per char
+        const left = `calc(50% + ${offset}em)`;
         html += `<span class="char" style="left: ${left}; ${style}">${char}</span>`;
     }
     html += '</div>';
