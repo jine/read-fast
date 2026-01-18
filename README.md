@@ -4,25 +4,28 @@ A simple speed reading application built with TypeScript and Bun. This tool uses
 
 ## Features
 
-- Displays the first word from a text source
-- Highlights the middle character in red for better focus
-- Uses a dyslexia-friendly font (Open Dyslexic)
+- Rapid Serial Visual Presentation (RSVP) speed reading
+- Adjustable reading speed (100-1000ms per word)
+- Adjustable font size
+- Start/pause controls
+- Highlights the middle character in red for optimal focus
+- Uses a dyslexia-friendly font (Open Dyslexic) when served properly
 - Clean black background with white text for reduced eye strain
 
 ## Getting Started
 
 1. Install dependencies: `bun install`
-2. Serve the application: Use a static server or open index.html directly in your browser
-3. The app will load and display the first word from data.json
+2. Build the app: `bun run build`
+3. Serve the application: `bunx serve public` (for dyslexia font) or open public/index.html directly (font will fallback)
+4. Adjust speed, font size, and start reading
 
 ## Project Structure
 
-- `index.html`: Main HTML file
-- `reset.css`: CSS reset styles
-- `stylesheet.css`: Main styles
-- `data.json`: JSON file containing the text data
-- `src/script.ts`: TypeScript script for loading and displaying text
-- `script.js`: Compiled JavaScript file
+- `public/index.html`: Main HTML file
+- `public/reset.css`: CSS reset styles
+- `public/stylesheet.css`: Main styles
+- `src/script.ts`: TypeScript script with inlined text data
+- `public/script.js`: Compiled JavaScript file
 
 ## Technologies
 
