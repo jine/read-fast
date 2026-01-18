@@ -21,6 +21,35 @@ body {
     align-items: center;
 }
 
+#controls {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+}
+
+#controls label {
+    font-size: 14px;
+}
+
+#controls input[type="range"] {
+    width: 200px;
+}
+
+#controls button {
+    padding: 5px 10px;
+    background: white;
+    color: black;
+    border: none;
+    cursor: pointer;
+}
+
 #word-display {
     font-size: var(--font-size-display);
     text-align: center;
